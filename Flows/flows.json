@@ -1,0 +1,529 @@
+[
+    {
+        "id": "e2e6b514596bc9fd",
+        "type": "tab",
+        "label": "CP4 helper",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "96f1395df68c0c2d",
+        "type": "mqtt in",
+        "z": "e2e6b514596bc9fd",
+        "name": "",
+        "topic": "servomotor/cp4",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "4cb2b74abb901da2",
+        "nl": false,
+        "rap": false,
+        "rh": "0",
+        "inputs": 0,
+        "x": 640,
+        "y": 80,
+        "wires": [
+            [
+                "50c9651cbab8b329",
+                "55e0df49eb2f27c4"
+            ]
+        ]
+    },
+    {
+        "id": "50c9651cbab8b329",
+        "type": "serial out",
+        "z": "e2e6b514596bc9fd",
+        "name": "",
+        "serial": "e272b0cc5c56f630",
+        "x": 1030,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "6a5ef8ec2acec92f",
+        "type": "serial in",
+        "z": "e2e6b514596bc9fd",
+        "name": "",
+        "serial": "e272b0cc5c56f630",
+        "x": 210,
+        "y": 80,
+        "wires": [
+            [
+                "7a2000a68bb19eca"
+            ]
+        ]
+    },
+    {
+        "id": "29ad6f7dcc291267",
+        "type": "inject",
+        "z": "e2e6b514596bc9fd",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"temp\":20,\"humidade\":\"35%\"}",
+        "payloadType": "json",
+        "x": 180,
+        "y": 1100,
+        "wires": [
+            [
+                "5c610735981cd3c0",
+                "62c3f336e548f7fe",
+                "9877daa24f88c5a0"
+            ]
+        ]
+    },
+    {
+        "id": "62c3f336e548f7fe",
+        "type": "change",
+        "z": "e2e6b514596bc9fd",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 1100,
+        "wires": [
+            [
+                "81ea4e16ee4c1839",
+                "d6b28b4e0797611d"
+            ]
+        ]
+    },
+    {
+        "id": "81ea4e16ee4c1839",
+        "type": "ui_gauge",
+        "z": "e2e6b514596bc9fd",
+        "name": "",
+        "group": "ee511e22606b9de4",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 790,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "5c610735981cd3c0",
+        "type": "debug",
+        "z": "e2e6b514596bc9fd",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 250,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "d6b28b4e0797611d",
+        "type": "debug",
+        "z": "e2e6b514596bc9fd",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "9877daa24f88c5a0",
+        "type": "change",
+        "z": "e2e6b514596bc9fd",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.humidade",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 1220,
+        "wires": [
+            [
+                "c9d58455b9a77727"
+            ]
+        ]
+    },
+    {
+        "id": "c9d58455b9a77727",
+        "type": "ui_gauge",
+        "z": "e2e6b514596bc9fd",
+        "name": "",
+        "group": "ee511e22606b9de4",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidade",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 780,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "13b83585626c45f4",
+        "type": "mqtt out",
+        "z": "e2e6b514596bc9fd",
+        "name": "",
+        "topic": "servomotor/cp4",
+        "qos": "",
+        "retain": "",
+        "broker": "4cb2b74abb901da2",
+        "x": 780,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "62f67e53a65b110d",
+        "type": "function",
+        "z": "e2e6b514596bc9fd",
+        "name": "Autorização",
+        "func": "if (msg.payload.card == \" 93 C2 0A 32\"){\n    msg.payload.msg = \"Usuário Autorizado\";\n    msg.payload.aut = true;\n    msg.payload.date = \"01/09/2022\"\n}else{\n    msg.payload.msg = \"Não autorizado\";\n    \n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 160,
+        "wires": [
+            [
+                "13b83585626c45f4",
+                "e0d3b70472284bb4",
+                "b27108f660cf4fdd",
+                "8945139d2b21e577",
+                "c5fd25e99c7eaa4b"
+            ]
+        ]
+    },
+    {
+        "id": "e0d3b70472284bb4",
+        "type": "debug",
+        "z": "e2e6b514596bc9fd",
+        "name": "autorização",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "7a2000a68bb19eca",
+        "type": "json",
+        "z": "e2e6b514596bc9fd",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 430,
+        "y": 80,
+        "wires": [
+            [
+                "62f67e53a65b110d"
+            ]
+        ]
+    },
+    {
+        "id": "55e0df49eb2f27c4",
+        "type": "debug",
+        "z": "e2e6b514596bc9fd",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "e20a1f0c1d6a551e",
+        "type": "telegram sender",
+        "z": "e2e6b514596bc9fd",
+        "name": "",
+        "bot": "d498c57548848004",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 980,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b27108f660cf4fdd",
+        "type": "function",
+        "z": "e2e6b514596bc9fd",
+        "name": "function 2",
+        "func": "msg.payload.content = msg.payload.msg;\nmsg.payload.type = \"message\";\nmsg.payload.chatId = 1514848193;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 240,
+        "wires": [
+            [
+                "e20a1f0c1d6a551e"
+            ]
+        ]
+    },
+    {
+        "id": "8945139d2b21e577",
+        "type": "cloudantplus out",
+        "z": "e2e6b514596bc9fd",
+        "name": "",
+        "cloudant": "d95ca698c0df877a",
+        "database": "cp4",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 550,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c5fd25e99c7eaa4b",
+        "type": "change",
+        "z": "e2e6b514596bc9fd",
+        "name": "Output",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.msg",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 730,
+        "y": 300,
+        "wires": [
+            [
+                "82769e01714a8939"
+            ]
+        ]
+    },
+    {
+        "id": "82769e01714a8939",
+        "type": "ui_template",
+        "z": "e2e6b514596bc9fd",
+        "group": "cc1ec239b829c548",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "format": "<div layout=\"row\" layout-align=\"space-between\">\n    <p>Resultado: </p>\n    <font color=\"green\">\n        {{msg.payload }}\n    </font>\n    \n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 960,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4cb2b74abb901da2",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e272b0cc5c56f630",
+        "type": "serial-port",
+        "serialport": "/dev/tty.usbmodem11101",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "ee511e22606b9de4",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "9e716a573f73b0ad",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d498c57548848004",
+        "type": "telegram bot",
+        "botname": "Cp4_IoT2TDSJ_bot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "d95ca698c0df877a",
+        "type": "cloudantplus",
+        "host": "https://apikey-v2-cdv33i8gcp4k5dsz6x46luot522yml7wys0tajqzzo9:706945bb9c9d43883502f380d400c87b@c126bd21-d5fb-4ea1-baa1-6b95472a8f66-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": "cp4",
+        "useapikey": false
+    },
+    {
+        "id": "cc1ec239b829c548",
+        "type": "ui_group",
+        "name": "Acessos",
+        "tab": "221b6999523b9562",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9e716a573f73b0ad",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "221b6999523b9562",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

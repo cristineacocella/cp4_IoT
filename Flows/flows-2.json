@@ -1,0 +1,330 @@
+[
+    {
+        "id": "7028701727d7f008",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9a65c579b504571b",
+        "type": "serial in",
+        "z": "7028701727d7f008",
+        "name": "",
+        "serial": "e272b0cc5c56f630",
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "ebff22fb9ab211be"
+            ]
+        ]
+    },
+    {
+        "id": "ebff22fb9ab211be",
+        "type": "json",
+        "z": "7028701727d7f008",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 410,
+        "y": 160,
+        "wires": [
+            [
+                "3c2c57b8bcdb117d",
+                "cfec8f7485385d30"
+            ]
+        ]
+    },
+    {
+        "id": "3c2c57b8bcdb117d",
+        "type": "debug",
+        "z": "7028701727d7f008",
+        "name": "json",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "cfec8f7485385d30",
+        "type": "mqtt out",
+        "z": "7028701727d7f008",
+        "name": "",
+        "topic": "sensorumid/cp4",
+        "qos": "",
+        "retain": "",
+        "broker": "4cb2b74abb901da2",
+        "x": 640,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "93b073d4cf849e26",
+        "type": "mqtt in",
+        "z": "7028701727d7f008",
+        "name": "",
+        "topic": "sensorumid/cp4",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "4cb2b74abb901da2",
+        "inputs": 0,
+        "x": 180,
+        "y": 240,
+        "wires": [
+            [
+                "284018bf827951dc"
+            ]
+        ]
+    },
+    {
+        "id": "2f778d774139025b",
+        "type": "change",
+        "z": "7028701727d7f008",
+        "name": "temp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temperatura",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 240,
+        "wires": [
+            [
+                "a86d1005139743a4",
+                "a5c28cc0f6b45145"
+            ]
+        ]
+    },
+    {
+        "id": "a86d1005139743a4",
+        "type": "debug",
+        "z": "7028701727d7f008",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "284018bf827951dc",
+        "type": "function",
+        "z": "7028701727d7f008",
+        "name": "function 1",
+        "func": "\nmsg.payload.temperatura = 25;\nmsg.payload.umidade = 30;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 240,
+        "wires": [
+            [
+                "2f778d774139025b",
+                "452c29b4bce45bdb"
+            ]
+        ]
+    },
+    {
+        "id": "452c29b4bce45bdb",
+        "type": "change",
+        "z": "7028701727d7f008",
+        "name": "humidade",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.umidade",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 320,
+        "wires": [
+            [
+                "db79595f23795ae4",
+                "5030166b6dd95371"
+            ]
+        ]
+    },
+    {
+        "id": "db79595f23795ae4",
+        "type": "debug",
+        "z": "7028701727d7f008",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "a5c28cc0f6b45145",
+        "type": "ui_gauge",
+        "z": "7028701727d7f008",
+        "name": "",
+        "group": "ed451fde7f3ad0fb",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 690,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "5030166b6dd95371",
+        "type": "ui_gauge",
+        "z": "7028701727d7f008",
+        "name": "",
+        "group": "93507bf4b6ade186",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidade",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 730,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "e272b0cc5c56f630",
+        "type": "serial-port",
+        "serialport": "/dev/tty.usbmodem11101",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "4cb2b74abb901da2",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ed451fde7f3ad0fb",
+        "type": "ui_group",
+        "name": "Temperatura",
+        "tab": "9e716a573f73b0ad",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "93507bf4b6ade186",
+        "type": "ui_group",
+        "name": "Humidade",
+        "tab": "9e716a573f73b0ad",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9e716a573f73b0ad",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
