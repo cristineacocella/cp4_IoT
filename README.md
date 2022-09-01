@@ -6,4 +6,4 @@ Integrantes:
 
 ## Jonathan Felix || RM: 88082
 
-<img src="https://arnaldojr.github.io/IoT/checkpoint4/diagramablocos.png">
+<img src="https://github.com/cristineacocella/cp4_IoT/blob/main/arquitetura.jpeg">
