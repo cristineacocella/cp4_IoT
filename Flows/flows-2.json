@@ -63,6 +63,11 @@
         "topic": "sensorumid/cp4",
         "qos": "",
         "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
         "broker": "4cb2b74abb901da2",
         "x": 640,
         "y": 160,
@@ -77,12 +82,16 @@
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "4cb2b74abb901da2",
+        "nl": false,
+        "rap": false,
+        "rh": "0",
         "inputs": 0,
         "x": 180,
         "y": 240,
         "wires": [
             [
-                "284018bf827951dc"
+                "2f778d774139025b",
+                "452c29b4bce45bdb"
             ]
         ]
     },
@@ -129,26 +138,6 @@
         "x": 540,
         "y": 280,
         "wires": []
-    },
-    {
-        "id": "284018bf827951dc",
-        "type": "function",
-        "z": "7028701727d7f008",
-        "name": "function 1",
-        "func": "\nmsg.payload.temperatura = 25;\nmsg.payload.umidade = 30;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 360,
-        "y": 240,
-        "wires": [
-            [
-                "2f778d774139025b",
-                "452c29b4bce45bdb"
-            ]
-        ]
     },
     {
         "id": "452c29b4bce45bdb",
@@ -251,7 +240,7 @@
     {
         "id": "e272b0cc5c56f630",
         "type": "serial-port",
-        "serialport": "/dev/tty.usbmodem11101",
+        "serialport": "/dev/tty.usbmodem1101",
         "serialbaud": "9600",
         "databits": "8",
         "parity": "none",
@@ -271,7 +260,7 @@
         "id": "4cb2b74abb901da2",
         "type": "mqtt-broker",
         "name": "",
-        "broker": "broker.hivemq.com",
+        "broker": "broker.mqttdashboard.com",
         "port": "1883",
         "clientid": "",
         "autoConnect": true,

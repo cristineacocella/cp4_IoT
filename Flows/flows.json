@@ -3,7 +3,7 @@
         "id": "e2e6b514596bc9fd",
         "type": "tab",
         "label": "CP4 helper",
-        "disabled": false,
+        "disabled": true,
         "info": ""
     },
     {
@@ -411,7 +411,7 @@
         "id": "4cb2b74abb901da2",
         "type": "mqtt-broker",
         "name": "",
-        "broker": "broker.hivemq.com",
+        "broker": "broker.mqttdashboard.com",
         "port": "1883",
         "clientid": "",
         "autoConnect": true,
@@ -440,7 +440,7 @@
     {
         "id": "e272b0cc5c56f630",
         "type": "serial-port",
-        "serialport": "/dev/tty.usbmodem11101",
+        "serialport": "/dev/tty.usbmodem1101",
         "serialbaud": "9600",
         "databits": "8",
         "parity": "none",
